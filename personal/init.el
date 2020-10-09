@@ -15,4 +15,18 @@
 (use-package base16-theme
              :ensure t
              :config
-             (load-theme 'base16-ashes t))
+             (load-theme 'base16-atelier-forest t))
+
+(setq font "hack 12")
+(set-face-attribute 'default t :font font)
+(set-frame-font font nil t)
+
+(require 'eglot-fsharp)
+(use-package fsharp-mode
+  :defer t
+  :ensure t)
+
+(global-set-key (kbd "C-x t f") 'random-timer-log-false)
+(global-set-key (kbd "C-x t t") 'random-timer-log-true)
+(global-set-key (kbd "C-x t s") 'random-timer-start)
+(global-set-key (kbd "C-x t p") 'random-timer-stop)
