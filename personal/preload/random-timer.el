@@ -44,11 +44,16 @@
     (start-process "random-timer-sound-alarm" nil random-timer-audio-player
                    random-timer-audio-file)))
 
+(defun random-timer--log (value)
+  "Log VALUE to random-timer-log-file."
+  (append-to-file (concat (current-time-string) "," value "\n")
+                  nil random-timer-log-file))
+
 (defun random-timer--sound-alarm ()
   "Plays the alarm until stopped, unless an alarm is already sounding."
   (unless random-timer--alarm
-      (setq random-timer--alarm
-            (run-with-timer 0 random-timer-audio-file-length 'random-timer--ding))))
+    (setq random-timer--alarm
+          (run-with-timer 0 random-timer-audio-file-length 'random-timer--ding))))
 
 (defun random-timer--schedule-timer ()
   "Randomly schedule a timer to go off in the next minute."
@@ -70,6 +75,7 @@
   "Start the random timer."
   (interactive)
   (unless random-timer--timer
+    (random-timer--log "start")
     (setq random-timer--timer (run-with-timer
                                60 60 'random-timer--maybe-schedule-timer))))
 
@@ -77,15 +83,11 @@
   "Stop the random timer."
   (interactive)
   (when random-timer--timer
+    (random-timer--log "stop")
     (cancel-timer random-timer--timer)
     (cancel-timer random-timer--alarm)
     (setq random-timer--timer nil)
     (setq random-timer--alarm nil)))
-
-(defun random-timer--log (value)
-  "Log VALUE to random-timer-log-file."
-  (append-to-file (concat (current-time-string) "," value "\n")
-                nil random-timer-log-file))
 
 (defun random-timer-log-true ()
   "Silence alarm and log true."
