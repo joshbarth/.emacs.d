@@ -3,6 +3,8 @@
 (scroll-bar-mode -1)
 (blink-cursor-mode -1)
 
+(setq whitespace-line-column 120)
+
 (setq inhibit-startup-screen t
       initial-scratch-message "")
 
@@ -19,13 +21,22 @@
 
 ;; chromebook
 ;;(setq font "hack 16")
-(set-face-attribute 'default t :font font)
-(set-frame-font font nil t)
 
-(require 'eglot-fsharp)
 (use-package fsharp-mode
   :defer t
   :ensure t)
+
+
+(require 'eglot-fsharp)
+
+(use-package restclient
+  :defer t
+  :ensure t)
+
+(add-hook 'fsharp-mode-hook 'rainbow-delimiters-mode)
+(setq font "hack 12")
+(set-face-attribute 'default t :font font)
+(set-frame-font font nil t)
 
 (global-set-key (kbd "C-x t f") 'random-timer-log-false)
 (global-set-key (kbd "C-x t t") 'random-timer-log-true)
