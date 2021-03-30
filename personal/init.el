@@ -17,7 +17,8 @@
              :config
              (load-theme 'base16-atelier-forest t))
 
-(setq font "hack 12")
+;; chromebook
+;;(setq font "hack 16")
 (set-face-attribute 'default t :font font)
 (set-frame-font font nil t)
 

@@ -84,8 +84,10 @@
   (interactive)
   (when random-timer--timer
     (random-timer--log "stop")
-    (cancel-timer random-timer--timer)
-    (cancel-timer random-timer--alarm)
+    (when random-timer--timer
+      (cancel-timer random-timer--timer))
+    (when random-timer--alarm
+      (cancel-timer random-timer--alarm))
     (setq random-timer--timer nil)
     (setq random-timer--alarm nil)))
 
