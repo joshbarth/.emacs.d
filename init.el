@@ -1,0 +1,25 @@
+(defun emacs-config-file (file)
+  "Expands the given file to a relative path from user-emacs-directory"
+  (expand-file-name file user-emacs-directory))
+
+(let ((custom (emacs-config-file "custom.el"))
+      (package-file (emacs-config-file "package"))
+      (appearance-file (emacs-config-file "appearance"))
+      (basics-file (emacs-config-file "basics"))
+      (exwm-file (emacs-config-file "exwm"))
+      (git-file (emacs-config-file "git"))
+      (hydra-file (emacs-config-file "hydra"))
+      (ivy-file (emacs-config-file "ivy"))
+      (org-file (emacs-config-file "org")))
+  (setq custom-file custom)
+  (load custom-file)
+  (load package-file)
+  (load appearance-file)
+  (load basics-file)
+  (load exwm-file)
+  (load git-file)
+  (load ivy-file)
+  (load hydra-file)
+  (load org-file))
+
+
