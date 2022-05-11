@@ -11,4 +11,6 @@
          ("C-c n g" . org-roam-graph)
          ("C-c n i" . org-roam-node-insert)
          ("C-c n c" . org-roam-capture)
-         ("C-c n j" . org-roam-dailies-capture-today)))
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  (org-roam-setup))

@@ -5,3 +5,11 @@
 /transient/
 /ido.last
 org-roam.db
+.DS_Store
+/.cache/
+/.lsp-session-v1
+/.org-id-locations
+/bookmarks
+/eshell/
+/projectile-bookmarks.eld
+/url/
