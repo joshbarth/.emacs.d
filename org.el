@@ -14,3 +14,11 @@
          ("C-c n j" . org-roam-dailies-capture-today))
   :config
   (org-roam-setup))
+
+(use-package org-roam-ui
+  :straight t
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))

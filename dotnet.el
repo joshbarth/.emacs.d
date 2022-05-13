@@ -12,6 +12,10 @@
 (use-package fsharp-mode
   :straight t)
 
+(use-package flycheck
+  :straight t
+  :hook (csharp-mode . flycheck-mode))
+
 (use-package lsp-mode
   :straight t
   :hook
