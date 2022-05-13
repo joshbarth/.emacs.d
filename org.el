@@ -2,12 +2,22 @@
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
 
+(defun org-roam-node-find-excluding-dailies ()
+  "Find and open an org-roam node, but exclude daily files from the search."
+  (interactive)
+  (org-roam-node-find
+   nil "" (lambda (node) (not (equal (file-name-base
+				      (directory-file-name
+				       (file-name-directory
+					(org-roam-node-file node))))
+				     "daily")))))
+
 (use-package org-roam
   :straight t
   :custom
   (org-roam-directory (file-truename "~/org/"))
   :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
+         ("C-c n f" . org-roam-node-find-excluding-dailies)
          ("C-c n g" . org-roam-graph)
          ("C-c n i" . org-roam-node-insert)
          ("C-c n c" . org-roam-capture)
