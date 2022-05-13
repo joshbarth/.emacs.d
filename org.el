@@ -22,3 +22,24 @@
         org-roam-ui-follow t
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start t))
+
+(setq org-roam-capture-templates
+      '(("g" "general" plain "%?"
+         :target (file+head "general/%<%Y%m%d%H%M%S>-${slug}.org"
+                            "#+title: ${title}\n") :unnarrowed t)
+        ("m" "maersk" plain "%?"
+         :target (file+head "maersk/%<%Y%m%d%H%M%S>-${slug}.org"
+                            "#+title: ${title}\n") :unnarrowed t)
+        ("p" "personal" plain "%?"
+         :target (file+head "personal/%<%Y%m%d%H%M%S>-${slug}.org"
+                            "#+title: ${title}\n") :unnarrowed t)))
+
+(setq org-roam-dailies-directory "")
+
+(setq org-roam-dailies-capture-templates
+      '(("g" "general" entry "* %?" :target
+	 (file+head "general/daily/%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>"))
+	("m" "maersk" entry "* %?" :target
+	 (file+head "maersk/daily/%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>"))
+	("p" "personal" entry "* %?" :target
+	 (file+head "personal/daily/%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>"))))

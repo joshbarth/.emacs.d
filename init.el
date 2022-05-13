@@ -22,6 +22,7 @@
   (load basics-file)
   (load completion-file)
   (load dotnet-file)
+  (load exwm-file)
   (load git-file)
   (load ivy-file)
   (load hydra-file)
