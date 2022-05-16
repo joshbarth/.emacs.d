@@ -2,14 +2,16 @@
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
 
+(defun file-parent-directory-name (file)
+  "Returns the name of the files parent directory, (not the absolute path)"
+  (file-name-base (directory-file-name (file-name-directory file))))
+
 (defun org-roam-node-find-excluding-dailies ()
   "Find and open an org-roam node, but exclude daily files from the search."
   (interactive)
   (org-roam-node-find
-   nil "" (lambda (node) (not (equal (file-name-base
-				      (directory-file-name
-				       (file-name-directory
-					(org-roam-node-file node))))
+   nil "" (lambda (node) (not (equal (file-parent-directory-name
+				      (org-roam-node-file node))
 				     "daily")))))
 
 (use-package org-roam

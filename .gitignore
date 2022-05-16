@@ -15,3 +15,4 @@ org-roam.db
 /url/
 recentf
 /.#ido.last
+/tramp
